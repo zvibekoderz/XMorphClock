@@ -11,7 +11,7 @@ on:
       - 'gradlew'
       - '.github/workflows/build_experimental.yml'
   pull_request:
-    branches: [ experimental ]
+    branches: [ master ]
   workflow_dispatch:
 
 permissions:
