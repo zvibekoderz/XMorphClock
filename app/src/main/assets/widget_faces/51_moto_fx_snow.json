@@ -1,0 +1,106 @@
+{
+  "name": "Moto FX \u00b7 Snow",
+  "category": "medium",
+  "span": 2,
+  "layers": [
+    {
+      "id": "card",
+      "type": "CARD",
+      "color": "#E61C1C1E",
+      "effect": "SOLID",
+      "aspect": 2.2,
+      "radius": 0.22,
+      "weight": 500,
+      "sleepWeight": 250,
+      "width": 100,
+      "height": 700,
+      "change": "FADE",
+      "sleepStyle": "HIDE",
+      "animKind": "breathe",
+      "animSpeed": 0.7,
+      "animAmount": 0.3
+    },
+    {
+      "id": "fx",
+      "type": "WEATHER_EFFECT",
+      "effectKind": "snow",
+      "color": "#FFFFFF",
+      "opacity": 0.6,
+      "aspect": 2.2,
+      "radius": 0.22,
+      "effectDensity": 1.1,
+      "effectSpeed": 0.75,
+      "change": "NONE",
+      "sleepStyle": "HIDE"
+    },
+    {
+      "id": "label",
+      "type": "TEXT",
+      "font": "res:montserrat",
+      "format": "SNOW",
+      "weight": 700,
+      "sleepWeight": 250,
+      "width": 100,
+      "height": 700,
+      "color": "#F2FFFFFF",
+      "tracking": 0.06,
+      "caps": true,
+      "shadow": 0.35,
+      "change": "FADE",
+      "sleepStyle": "THIN",
+      "animKind": "glow",
+      "animSpeed": 1.1,
+      "animAmount": 0.4
+    }
+  ],
+  "large": {
+    "stack": {
+      "width": 0.44,
+      "height": 0.2,
+      "children": [
+        {
+          "layer": "card",
+          "size": 0.44,
+          "anchor": "CENTER"
+        },
+        {
+          "layer": "fx",
+          "size": 0.44,
+          "anchor": "CENTER"
+        },
+        {
+          "layer": "label",
+          "size": 0.05,
+          "anchor": "CENTER"
+        }
+      ]
+    },
+    "x": 0.5,
+    "anchor": "CENTER"
+  },
+  "small": {
+    "stack": {
+      "width": 0.2728,
+      "height": 0.124,
+      "children": [
+        {
+          "layer": "card",
+          "size": 0.2728,
+          "anchor": "CENTER"
+        },
+        {
+          "layer": "fx",
+          "size": 0.2728,
+          "anchor": "CENTER"
+        },
+        {
+          "layer": "label",
+          "size": 0.031,
+          "anchor": "CENTER"
+        }
+      ]
+    },
+    "x": 0.5,
+    "anchor": "CENTER"
+  }
+}

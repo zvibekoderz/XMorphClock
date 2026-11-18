@@ -1,0 +1,198 @@
+{
+  "name": "Moto Weather Mini",
+  "category": "classic",
+  "span": 2,
+  "layers": [
+    {
+      "id": "card",
+      "type": "CARD",
+      "color": "#E61C1C1E",
+      "effect": "SOLID",
+      "aspect": 2.2,
+      "radius": 0.22,
+      "weight": 500,
+      "sleepWeight": 250,
+      "width": 100,
+      "height": 700,
+      "change": "FADE",
+      "sleepStyle": "HIDE",
+      "animKind": "breathe",
+      "animSpeed": 0.7,
+      "animAmount": 0.25
+    },
+    {
+      "id": "fx",
+      "type": "WEATHER_EFFECT",
+      "effectKind": "auto",
+      "color": "#FFFFFF",
+      "opacity": 0.45,
+      "aspect": 2.2,
+      "radius": 0.22,
+      "effectDensity": 1.0,
+      "effectSpeed": 0.4,
+      "change": "NONE",
+      "sleepStyle": "HIDE"
+    },
+    {
+      "id": "wicon",
+      "type": "WEATHER_ICON",
+      "font": "",
+      "weight": 500,
+      "sleepWeight": 250,
+      "width": 100,
+      "height": 700,
+      "color": "#FFFFFF",
+      "change": "FADE",
+      "sleepStyle": "THIN",
+      "animKind": "float",
+      "animSpeed": 0.9,
+      "animAmount": 1.0
+    },
+    {
+      "id": "wtemp",
+      "type": "WEATHER_TEMP",
+      "font": "res:google_sans_flex?opsz=144",
+      "weight": 500,
+      "sleepWeight": 250,
+      "width": 100,
+      "height": 700,
+      "color": "#FFFFFF",
+      "change": "FADE",
+      "sleepStyle": "THIN",
+      "animKind": "glow",
+      "animSpeed": 0.8,
+      "animAmount": 0.3
+    },
+    {
+      "id": "wcond",
+      "type": "WEATHER_CONDITION",
+      "font": "res:google_sans_flex?opsz=144",
+      "weight": 500,
+      "sleepWeight": 250,
+      "width": 100,
+      "height": 700,
+      "color": "#FFFFFF",
+      "change": "FADE",
+      "sleepStyle": "THIN"
+    },
+    {
+      "id": "whighlow",
+      "type": "WEATHER_HIGH_LOW",
+      "format": "H:%s L:%s",
+      "font": "res:google_sans_flex?opsz=144",
+      "weight": 500,
+      "sleepWeight": 250,
+      "width": 100,
+      "height": 700,
+      "color": "#A6FFFFFF",
+      "change": "FADE",
+      "sleepStyle": "THIN"
+    }
+  ],
+  "large": {
+    "stack": {
+      "width": 0.48,
+      "height": 0.2182,
+      "children": [
+        {
+          "layer": "card",
+          "size": 0.48,
+          "anchor": "CENTER"
+        },
+        {
+          "layer": "fx",
+          "size": 0.48,
+          "anchor": "CENTER"
+        },
+        {
+          "column": {
+            "gap": 0.008,
+            "align": "CENTER",
+            "children": [
+              {
+                "row": {
+                  "gap": 0.014,
+                  "align": "CENTER",
+                  "children": [
+                    {
+                      "layer": "wicon",
+                      "size": 0.072
+                    },
+                    {
+                      "layer": "wtemp",
+                      "size": 0.072
+                    }
+                  ]
+                }
+              },
+              {
+                "layer": "wcond",
+                "size": 0.03
+              },
+              {
+                "layer": "whighlow",
+                "size": 0.026
+              }
+            ]
+          },
+          "anchor": "CENTER"
+        }
+      ]
+    },
+    "x": 0.5,
+    "anchor": "CENTER"
+  },
+  "small": {
+    "stack": {
+      "width": 0.2976,
+      "height": 0.1353,
+      "children": [
+        {
+          "layer": "card",
+          "size": 0.2976,
+          "anchor": "CENTER"
+        },
+        {
+          "layer": "fx",
+          "size": 0.2976,
+          "anchor": "CENTER"
+        },
+        {
+          "column": {
+            "gap": 0.005,
+            "align": "CENTER",
+            "children": [
+              {
+                "row": {
+                  "gap": 0.0087,
+                  "align": "CENTER",
+                  "children": [
+                    {
+                      "layer": "wicon",
+                      "size": 0.0446
+                    },
+                    {
+                      "layer": "wtemp",
+                      "size": 0.0446
+                    }
+                  ]
+                }
+              },
+              {
+                "layer": "wcond",
+                "size": 0.0186
+              },
+              {
+                "layer": "whighlow",
+                "size": 0.0161
+              }
+            ]
+          },
+          "anchor": "CENTER"
+        }
+      ]
+    },
+    "x": 0.5,
+    "anchor": "CENTER"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "name": "Moto Battery Ring",
+  "category": "medium",
+  "span": 2,
+  "layers": [
+    {
+      "id": "ring",
+      "type": "GAUGE",
+      "format": "battery",
+      "color": "#FFFFFF",
+      "aspect": 1.0,
+      "weight": 500,
+      "sleepWeight": 250,
+      "width": 100,
+      "height": 700,
+      "strokeWidth": 0.026,
+      "gaugeStart": 90,
+      "gaugeSweep": 360,
+      "change": "FADE",
+      "sleepStyle": "THIN",
+      "animKind": "sweep",
+      "animSpeed": 1.0,
+      "animAmount": 1.0
+    },
+    {
+      "id": "bicon",
+      "type": "BATTERY_ICON",
+      "font": "",
+      "weight": 500,
+      "sleepWeight": 250,
+      "width": 100,
+      "height": 700,
+      "color": "#FFFFFF",
+      "change": "FADE",
+      "sleepStyle": "THIN",
+      "animKind": "float",
+      "animSpeed": 0.9,
+      "animAmount": 0.8
+    },
+    {
+      "id": "level",
+      "type": "BATTERY_LEVEL",
+      "font": "res:montserrat",
+      "weight": 500,
+      "sleepWeight": 250,
+      "width": 100,
+      "height": 700,
+      "color": "#FFFFFF",
+      "shadow": 0.45,
+      "change": "FADE",
+      "sleepStyle": "THIN",
+      "animKind": "glow",
+      "animSpeed": 1.0,
+      "animAmount": 0.45
+    }
+  ],
+  "large": {
+    "stack": {
+      "width": 0.24,
+      "height": 0.24,
+      "children": [
+        {
+          "layer": "ring",
+          "size": 0.24,
+          "anchor": "CENTER"
+        },
+        {
+          "column": {
+            "gap": 0.006,
+            "align": "CENTER",
+            "children": [
+              {
+                "layer": "bicon",
+                "size": 0.05
+              },
+              {
+                "layer": "level",
+                "size": 0.042
+              }
+            ]
+          },
+          "anchor": "CENTER"
+        }
+      ]
+    },
+    "x": 0.5,
+    "anchor": "CENTER"
+  },
+  "small": {
+    "stack": {
+      "width": 0.1488,
+      "height": 0.1488,
+      "children": [
+        {
+          "layer": "ring",
+          "size": 0.1488,
+          "anchor": "CENTER"
+        },
+        {
+          "column": {
+            "gap": 0.0037,
+            "align": "CENTER",
+            "children": [
+              {
+                "layer": "bicon",
+                "size": 0.031
+              },
+              {
+                "layer": "level",
+                "size": 0.026
+              }
+            ]
+          },
+          "anchor": "CENTER"
+        }
+      ]
+    },
+    "x": 0.5,
+    "anchor": "CENTER"
+  }
+}
