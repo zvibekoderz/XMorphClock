@@ -1,0 +1,85 @@
+name: Build Experimental APK
+
+on:
+  push:
+    branches: [ experimental ]
+    paths:
+      - 'app/**'
+      - 'gradle/**'
+      - '**/*.gradle.kts'
+      - 'gradle.properties'
+      - 'gradlew'
+      - '.github/workflows/build_experimental.yml'
+  pull_request:
+    branches: [ experimental ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-experimental-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build debug APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v6
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          packages: tools platform-tools platforms;android-37 build-tools;37.0.0
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Read version
+        id: version
+        run: |
+          name=$(grep -oP 'versionName = "\K[^"]+' app/build.gradle.kts)
+          code=$(grep -oP 'versionCode = \K[0-9]+' app/build.gradle.kts)
+          echo "name=$name" >> "$GITHUB_OUTPUT"
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          echo "Version: $name ($code)"
+
+      - name: Build debug APK
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: Verify and locate APK
+        run: |
+          set -euo pipefail
+          apk=$(find app/build/outputs/apk/debug -name '*.apk' -print -quit)
+          test -n "$apk" || { echo "No APK produced" >&2; exit 1; }
+          echo "APK_PATH=$apk" >> "$GITHUB_ENV"
+          ls -lh "$apk"
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: XMorphClock-${{ steps.version.outputs.name }}-experimental-${{ github.run_number }}
+          path: ${{ env.APK_PATH }}
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Job summary
+        run: |
+          {
+            echo "### Experimental build succeeded"
+            echo ""
+            echo "- Version: \`${{ steps.version.outputs.name }}\` (code \`${{ steps.version.outputs.code }}\`)"
+            echo "- Commit: \`${{ github.sha }}\`"
+            echo "- Ref: \`${{ github.ref_name }}\`"
+            echo "- Artifact: \`XMorphClock-${{ steps.version.outputs.name }}-experimental-${{ github.run_number }}\`"
+          } >> "$GITHUB_STEP_SUMMARY"
