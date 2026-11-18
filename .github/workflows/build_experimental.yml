@@ -2,7 +2,7 @@ name: Build Experimental APK
 
 on:
   push:
-    branches: [ experimental ]
+    branches: [ master ]
     paths:
       - 'app/**'
       - 'gradle/**'
